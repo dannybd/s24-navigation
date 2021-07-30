@@ -962,12 +962,12 @@ $.getJSON(
     const csv = Object.values(allTeamData)
       .flatMap(team =>
         team.coords.map(
-          coord => [team.name, coord.day, coord.x, coord.y].join(','),
+          coord => [team.id, team.name, coord.day, coord.x, coord.y].join(','),
         )
       )
       .join('\n');
     $('#csv')
-      .attr('href', `data:text/plain;charset=UTF-8,Team,Day,X,Y\n${csv}`)
+      .attr('href', `data:text/plain;charset=UTF-8,ID,Name,Day,X,Y\n${csv}`)
       .show();
 
     DAY_BOUNDS.end = Math.max(
@@ -988,7 +988,7 @@ $.getJSON(
         svg.selectAll('.teamData').remove();
         Object.values(allTeamData).forEach(team => drawTeamLines(team));
         Object.values(allTeamData).forEach(team => drawTeamEmoji(team));
-        
+
         // After redraw, re-hide the hidden teams
         const hiddenTeams = Object.values(allTeamData).filter(t => t.hidden);
         $(hiddenTeams.map(t => `.${teamClass(t)}`).join(', ')).hide();
