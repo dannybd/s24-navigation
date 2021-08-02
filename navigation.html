@@ -139,6 +139,7 @@
         <h1>Season 24 Navigation</h1>
         <p>Built by honu, with major help from glumbaron, dlareau, and ubuntor.</p>
       </header>
+      <!-- Borrowed with love from blaseball.com. Thank you to The Game Band for building a beautiful game -->
       <div class="QuadrantChart" id="Main-Body">
         <div class="QuadrantChart-Chart">
           <div class="QuadrantChart-Quadrant" style="grid-area: 2 / 2 / auto / auto;">
@@ -618,9 +619,9 @@ let allTeamData = [];
 
 $.getJSON(
   'media/navigation.json',
-  data => {
-    allTeamData = JSON.parse(data);
+  fetchedData => {
     $('#loading').hide();
+    allTeamData = fetchedData;
     allTeamData.forEach(team => drawTeamLines(team));
     allTeamData.forEach(team => drawTeamEmoji(team));
     allTeamData.forEach(team => addTeamButton(team));
