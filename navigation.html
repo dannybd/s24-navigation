@@ -131,7 +131,7 @@
 <div id="root">
   <div id="settings">
     <button id="lightdark" title="Toggle light and dark mode">🌗</button><br>
-    <a id="csv" title="Download CSV" download="navigation.csv">&nbsp;CSV&nbsp;</a>
+    <a id="csv" title="Download CSV" href="media/navigation.csv">&nbsp;CSV&nbsp;</a>
   </div>
   <div class="Main">
     <div class="Main-Body">
@@ -441,8 +441,6 @@ $('#lightdark').click(_ => {
   document.body.classList.toggle('theme-light');
 });
 
-$('#csv').hide();
-
 // Heavily adapted from:
 // https://medium.com/@kj_schmidt/making-a-simple-scatter-plot-with-d3js-58cc894d7c97
 
@@ -615,364 +613,21 @@ $('#toggle').click(_ => {
   $('.teamData').toggle();
 });
 
-const allTeamData = {
-  '8d87c468-699a-47a8-b40d-cfb73a5660ad': {
-    color: '#cd7672',
-    id: '8d87c468-699a-47a8-b40d-cfb73a5660ad',
-    name: 'Crabs',
-    localData: {
-      x: [0.013434962670138535, -0.0342728891488904, -0.109863109676374, -0.16129219041464746],
-      y: [0.6182080322993372, 0.5290341505693098, 0.46208494350184315, 0.37472257569437306],
-    },
-  },
-  'b63be8c2-576a-4d6e-8daf-814f8bcea96f': {
-    color: '#8877ee',
-    id: 'b63be8c2-576a-4d6e-8daf-814f8bcea96f',
-    name: 'Dale',
-    localData: {
-      x: [-0.6445052795942537, -0.6400563309081102, -0.6087118601896176, -0.5989386590841189],
-      y: [0.3413093992395577, 0.2257586330007315, 0.11661187196289267, 0.0016198678503502456],
-    },
-  },
-  'ca3f1c8c-c025-4d8e-8eef-5be6accbeb16': {
-    color: '#ff4230',
-    id: 'ca3f1c8c-c025-4d8e-8eef-5be6accbeb16',
-    name: 'Firefighters',
-    localData: {
-      x: [0.17460308087899074, 0.24802887739253426, 0.3056465604375922, 0.37729566420983396],
-      y: [0.9198486919197241, 0.8574202886602068, 0.7831794258643189, 0.7176891894284478],
-    },
-  },
-  '3f8bbb15-61c0-4e3f-8e4a-907a5fb1565e': {
-    color: '#cc66dd',
-    id: '3f8bbb15-61c0-4e3f-8e4a-907a5fb1565e',
-    name: 'Flowers',
-    localData: {
-      x: [-0.8687903590193652, -0.7746028707267675, -0.678349508152154, -0.5974023104744611],
-      y: [0.26491956624264107, 0.21754955950019939, 0.1971382147979741, 0.12653232853964397],
-    },
-  },
-  '105bc3ff-1320-4e37-8ef0-8d595cb95dd0': {
-    color: '#3f88fd',
-    id: '105bc3ff-1320-4e37-8ef0-8d595cb95dd0',
-    name: 'Garages',
-    localData: {
-      x: [-0.6062762590488552, -0.5140826366240643, -0.42519221849086053, -0.3430253940922844],
-      y: [0.21935561979651402, 0.21403853232996567, 0.2189989187873354, 0.240757520686698],
-    },
-  },
-  'd9f89a8a-c563-493e-9d64-78e4f9a55d4a': {
-    color: '#339991',
-    id: 'd9f89a8a-c563-493e-9d64-78e4f9a55d4a',
-    name: 'Georgias',
-    localData: {
-      x: [0.013485453802840587, 0.10926515466507286, 0.0805984305572015, 0.1439116091041583],
-      y: [0.7463540269194372, 0.7142120131856001, 0.8141499080165822, 0.7394704026214761],
-    },
-  },
-  'a37f9158-7f82-46bc-908c-c9e2dda7c33b': {
-    color: '#6b95b1',
-    id: 'a37f9158-7f82-46bc-908c-c9e2dda7c33b',
-    name: 'Jazz Hands',
-    localData: {
-      x: [-0.33825233462720267, -0.2464023362331209, -0.16411199945499166, -0.16342042594728304],
-      y: [0.36073088355678623, 0.36452582354584817, 0.3954688380396167, 0.2828057076122411],
-    },
-  },
-  'c73b705c-40ad-4633-a6ed-d357ee2e2bcf': {
-    color: '#f032c9',
-    id: 'c73b705c-40ad-4633-a6ed-d357ee2e2bcf',
-    name: 'Lift',
-    localData: {
-      x: [-0.6502412504970109, -0.6588339679999505, -0.6267941289612013, -0.610275551167089],
-      y: [0.29441294759803516, 0.17615333520559026, 0.06512138232676742, -0.0503942402961378],
-    },
-  },
-  'b72f3061-f573-40d7-832a-5ad475bd7909': {
-    color: '#dd6699',
-    id: 'b72f3061-f573-40d7-832a-5ad475bd7909',
-    name: 'Lovers',
-    localData: {
-      x: [-0.5547468228550255, -0.4617454023447303, -0.39148691462157614, -0.4159671806477321],
-      y: [0.5150199114291771, 0.47709920778276527, 0.4022742939980497, 0.4943669104092012],
-    },
-  },
-  '7966eb04-efcc-499b-8f03-d13916330531': {
-    color: '#f94965',
-    id: '7966eb04-efcc-499b-8f03-d13916330531',
-    name: 'Magic',
-    localData: {
-      x: [-0.38888030879929253, -0.30888018851399335, -0.21772646362106401, -0.22709858431924665],
-      y: [0.8334937052150307, 0.7795205528311867, 0.7407800066274315, 0.6516309981193824],
-    },
-  },
-  '46358869-dce9-4a01-bfba-ac24fc56f57e': {
-    color: '#998800',
-    id: '46358869-dce9-4a01-bfba-ac24fc56f57e',
-    name: 'Mechanics',
-    localData: {
-      x: [-0.0007144625633596913, 0.0657864506756625, 0.03587824512865774, 0.13209412301554369],
-      y: [0.8099747313479065, 0.7397187842722783, 0.6541564793192751, 0.6211000766584196],
-    },
-  },
-  '36569151-a2fb-43c1-9df7-2df512424c82': {
-    color: '#aa77aa',
-    id: '36569151-a2fb-43c1-9df7-2df512424c82',
-    name: 'Millennials',
-    localData: {
-      x: [0.29323919489882555, 0.40329440337285244, 0.45050473696515086, 0.5189533818147762],
-      y: [1.133806673705726, 1, 0.927625600298884, 0.8641484445240628],
-    },
-  },
-  'eb67ae5e-c4bf-46ca-bbbc-425cd34182ff': {
-    color: '#009bc2',
-    id: 'eb67ae5e-c4bf-46ca-bbbc-425cd34182ff',
-    name: 'Moist Talkers',
-    localData: {
-      x: [1, 0.9953661459020848, 0.9922308254263146, 0.9906709474621859],
-      y: [0.5263378860240443, 0.6228121066563044, 0.7191384383899062, 0.8152952428292032],
-    },
-  },
-  'b47df036-3aa4-4b98-8e9e-fe1d3ff1894b': {
-    color: '#ebbd24',
-    id: 'b47df036-3aa4-4b98-8e9e-fe1d3ff1894b',
-    name: 'Paws',
-    localData: {
-      x: [-0.7336385013419123, -0.6852276976136914, -0.7029185431282927, -0.6830387446646954],
-      y: [0.36536896139404734, 0.26481561061367115, 0.15143596723415123, 0.03988901521114639],
-    },
-  },
-  '23e4cbc1-e9cd-47fa-a35b-bfa06f726cb7': {
-    color: '#339991',
-    id: '23e4cbc1-e9cd-47fa-a35b-bfa06f726cb7',
-    name: 'Pies',
-    localData: {
-      x: [-0.30205125990819487, -0.2441599181728145, -0.2870705931419138, -0.19500906819751124],
-      y: [0.4074081231283523, 0.318368024949349, 0.21335650748720103, 0.18723535312490006],
-    },
-  },
-  '2e22beba-8e36-42ba-a8bf-975683c52b5f': {
-    color: '#552583',
-    id: '2e22beba-8e36-42ba-a8bf-975683c52b5f',
-    name: 'Queens',
-    localData: {
-      x: [-0.9591874791859416, -0.9381784843094813, -0.917924258370799, -0.8395351573532995],
-      y: [0.4555492490136175, 0.34812215288825943, 0.24050654311609548, 0.16879324136413554],
-    },
-  },
-  'bfd38797-8404-4b38-8b82-341da28b1f83': {
-    color: '#6388c8',
-    id: 'bfd38797-8404-4b38-8b82-341da28b1f83',
-    name: 'Shoe Thieves',
-    localData: {
-      x: [-0.24367757577298074, -0.1927181793973587, -0.15664479470420936, -0.11286730031364296],
-      y: [0.7382852137762824, 0.6560198654860503, 0.5668504685008954, 0.48049517200069614],
-    },
-  },
-  '9debc64f-74b7-4ae1-a4d6-fce0144b6ea5': {
-    color: '#9980ba',
-    id: '9debc64f-74b7-4ae1-a4d6-fce0144b6ea5',
-    name: 'Spies',
-    localData: {
-      x: [-0.6630094214245275, -0.5806878374533235, -0.4904335020111136, -0.42959220707357665],
-      y: [0.27390766169111547, 0.2059758905286074, 0.16197880090319755, 0.0717072066654939],
-    },
-  },
-  'b024e975-1c4a-4575-8936-a3754a08806a': {
-    color: '#b2838d',
-    id: 'b024e975-1c4a-4575-8936-a3754a08806a',
-    name: 'Steaks',
-    localData: {
-      x: [-0.4019682143027651, -0.3136423302098604, -0.22571972167438997, -0.14195426634954858],
-      y: [0.21618406815029614, 0.1783173053717924, 0.1680664182323776, 0.17364685096793134],
-    },
-  },
-  'f02aeae2-5e6a-4098-9842-02d2273f25c7': {
-    color: '#aa8855',
-    id: 'f02aeae2-5e6a-4098-9842-02d2273f25c7',
-    name: 'Sunbeams',
-    localData: {
-      x: [-0.5277763705071354, -0.4613740733118322, -0.37641586597484, -0.3025330851223976],
-      y: [0.6001373929070464, 0.5240313800667071, 0.47053160972123503, 0.4019884496719639],
-    },
-  },
-  '878c1bf6-0d21-4659-bfee-916c8314d69c': {
-    color: '#aa66ee',
-    id: '878c1bf6-0d21-4659-bfee-916c8314d69c',
-    name: 'Tacos',
-    localData: {
-      x: [-1, -0.9330404000322408, -0.8429676292156144, -0.7642953534823405],
-      y: [0.3749261545729724, 0.2861485609704449, 0.2297760286903603, 0.15577877950114594],
-    },
-  },
-  '747b8e4a-7e50-4638-a973-ea7950a3e739': {
-    color: '#f05d14',
-    id: '747b8e4a-7e50-4638-a973-ea7950a3e739',
-    name: 'Tigers',
-    localData: {
-      x: [-0.2394314008269557, -0.16201699006896114, -0.07634432643147708, -0.015486669365863251],
-      y: [0.2312905167628294, 0.2563286333853347, 0.25540215530939764, 0.3037042926494984],
-    },
-  },
-  '57ec08cc-0411-4643-b304-0e80dbc15ac7': {
-    color: '#cc7733',
-    id: '57ec08cc-0411-4643-b304-0e80dbc15ac7',
-    name: 'Wild Wings',
-    localData: {
-      x: [-0.4464913188725311, -0.3854834062573861, -0.36946019626851406, -0.29638838766241654],
-      y: [0.23178960376235078, 0.1401051907021735, 0.024127414376255207, -0.04791999609706704],
-    },
-  },
-  'bb4a9de5-c924-4923-a0cb-9d1445f1ee5d': {
-    color: '#aa8877',
-    id: 'bb4a9de5-c924-4923-a0cb-9d1445f1ee5d',
-    name: 'Worms',
-    localData: {
-      x: [-0.12178016850852104, -0.19709516286330447, -0.26940074075974935, -0.32858754935172174],
-      y: [0.10233233978660562, -0.0029876172049658756, -0.11040943960873124, -0.22510660454334452],
-    },
-  },
-  'd6a352fc-b675-40a0-864d-f4fd50aaeea0': {
-    color: '#04B1AA',
-    id: 'd6a352fc-b675-40a0-864d-f4fd50aaeea0',
-    name: 'Artists',
-  },
-  '258f6389-aac1-43d2-b30a-4b4dde90d5eb': {
-    color: '#3d82d1',
-    id: '258f6389-aac1-43d2-b30a-4b4dde90d5eb',
-    name: 'Boar',
-  },
-  '55c9fee3-79c8-4467-8dfb-ff1e340aae8c': {
-    color: '#8c8d8f',
-    id: '55c9fee3-79c8-4467-8dfb-ff1e340aae8c',
-    name: 'Cows',
-  },
-  '9494152b-99f6-4adb-9573-f9e084bc813f': {
-    color: '#3F83A7',
-    id: '9494152b-99f6-4adb-9573-f9e084bc813f',
-    name: 'Crabs Old',
-  },
-  'b6b5df8f-5602-4883-b47d-07e77ed9d5af': {
-    color: '#41260d',
-    id: 'b6b5df8f-5602-4883-b47d-07e77ed9d5af',
-    name: 'Excavators',
-  },
-  '54d0d0f2-16e0-42a0-9fff-79cfa7c4a157': {
-    color: '#4a7efc',
-    id: '54d0d0f2-16e0-42a0-9fff-79cfa7c4a157',
-    name: 'Fireballs',
-  },
-  'cbd44c06-231a-4d1a-bb7d-4170b06e566a': {
-    color: '#fdc846',
-    id: 'cbd44c06-231a-4d1a-bb7d-4170b06e566a',
-    name: 'Heartthrobs',
-  },
-  '4c192065-65d8-4010-8145-395f82d24ddf': {
-    color: '#1c3ef6',
-    id: '4c192065-65d8-4010-8145-395f82d24ddf',
-    name: 'Hedgehogs',
-  },
-  '88151292-6c12-4fb8-b2d6-3e64821293b3': {
-    color: '#4CA8F8',
-    id: '88151292-6c12-4fb8-b2d6-3e64821293b3',
-    name: 'Immortals',
-  },
-  '1e04e5cc-80a6-41c0-af0d-7292817eed79': {
-    color: '#C2FA19',
-    id: '1e04e5cc-80a6-41c0-af0d-7292817eed79',
-    name: 'Lobsters',
-  },
-  '1a51664e-efec-45fa-b0ba-06d04c344628': {
-    color: '#ad0155',
-    id: '1a51664e-efec-45fa-b0ba-06d04c344628',
-    name: 'Psychics',
-  },
-  '4cd14d96-f817-41a3-af6c-2d3ed0dd20b7': {
-    color: '#9B8B5A',
-    id: '4cd14d96-f817-41a3-af6c-2d3ed0dd20b7',
-    name: 'Saltines',
-  },
-  '3a094991-4cbc-4786-b74c-688876d243f4': {
-    color: '#91cacf',
-    id: '3a094991-4cbc-4786-b74c-688876d243f4',
-    name: 'Squirrels',
-  },
-  'c19bb50b-9a22-4dd2-8200-bce639b1b239': {
-    color: '#975D11',
-    id: 'c19bb50b-9a22-4dd2-8200-bce639b1b239',
-    name: 'Truckers',
-  },
-  'd0762a7e-004b-48a9-a832-a993982b305b': {
-    color: '#025C30',
-    id: 'd0762a7e-004b-48a9-a832-a993982b305b',
-    name: 'Whales',
-  },
-  'adc5b394-8f76-416d-9ce9-813706877b84': {
-    color: '#178f55',
-    id: 'adc5b394-8f76-416d-9ce9-813706877b84',
-    name: 'Breath Mints',
-  },
-  '979aee4a-6d80-4863-bf1c-ee1a78e06024': {
-    color: '#3ee652',
-    id: '979aee4a-6d80-4863-bf1c-ee1a78e06024',
-    name: 'Fridays',
-  },
+const DAY_BOUNDS = {
+  start: 28,
+  end: 99,
 };
 
-for (team in allTeamData) {
-  allTeamData[team].coords = [];
-  if (!allTeamData[team].localData) {
-    continue;
-  }
-  allTeamData[team].coords = allTeamData[team].localData.x.map((x, i) => ({
-    day: i + 28,
-    x: clamp(x, -1, 1),
-    y: clamp(allTeamData[team].localData.y[i], -1, 1),
-  }));
-}
+let allTeamData = {};
 
 $.getJSON(
-  'https://api.sibr.dev/chronicler/v2/entities?type=team',
+  'media/navigation.json',
   data => {
-    const teams = data.items.filter(team => team.entityId in allTeamData);
-    teams.forEach(team => {
-      const imp_motion = team.data?.state?.imp_motion;
-      if (!imp_motion) {
-        console.error('Missing team imp_motion!', team);
-        return;
-      }
-      const teamData = allTeamData[team.entityId];
-      const newDays = imp_motion.map(datum => ({
-        day: datum.day + 1,
-        x: -1 * clamp(datum.imPosition[0], -1, 1),
-        y: clamp(datum.imPosition[1], -1, 1),
-      }));
-      teamData.coords.push(...newDays);
-
-      const emoji = team.data.emoji;
-      teamData.emoji = emoji.startsWith('0x')
-        ? String.fromCodePoint(emoji).trim()
-        : emoji.trim();
-    });
+    allTeamData = JSON.parse(data);
     $('#loading').hide();
     Object.values(allTeamData).forEach(team => drawTeamLines(team));
     Object.values(allTeamData).forEach(team => drawTeamEmoji(team));
     Object.values(allTeamData).forEach(team => addTeamButton(team));
-
-    const csv = Object.values(allTeamData)
-      .flatMap(team =>
-        team.coords.map(
-          coord => [team.id, team.name, coord.day, coord.x, coord.y].join(','),
-        )
-      )
-      .join('\n');
-    $('#csv')
-      .attr('href', `data:text/plain;charset=UTF-8,ID,Name,Day,X,Y\n${csv}`)
-      .show();
-
-    DAY_BOUNDS.end = Math.max(
-      ...Object.values(allTeamData).map(t => t.coords[t.coords.length - 1].day),
-    );
 
     updateSliderDays();
 
@@ -996,11 +651,6 @@ $.getJSON(
     });
   },
 );
-
-const DAY_BOUNDS = {
-  start: 28,
-  end: 999,
-};
 
 </script>
 </body>
