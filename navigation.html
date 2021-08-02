@@ -601,15 +601,15 @@ const updateSliderDays = () => {
 };
 
 $('#all').click(_ => {
-  Object.values(allTeamData).forEach(t => {t.hidden = false;})
+  allTeamData.forEach(t => t.hidden = false);
   $('.teamData').show();
 });
 $('#none').click(_ => {
-  Object.values(allTeamData).forEach(t => {t.hidden = true;})
+  allTeamData.forEach(t => t.hidden = true);
   $('.teamData').hide();
 });
 $('#toggle').click(_ => {
-  Object.values(allTeamData).forEach(t => {t.hidden = !t.hidden;})
+  allTeamData.forEach(t => t.hidden = !t.hidden);
   $('.teamData').toggle();
 });
 
@@ -618,16 +618,16 @@ const DAY_BOUNDS = {
   end: 99,
 };
 
-let allTeamData = {};
+let allTeamData = [];
 
 $.getJSON(
   'media/navigation.json',
   data => {
     allTeamData = JSON.parse(data);
     $('#loading').hide();
-    Object.values(allTeamData).forEach(team => drawTeamLines(team));
-    Object.values(allTeamData).forEach(team => drawTeamEmoji(team));
-    Object.values(allTeamData).forEach(team => addTeamButton(team));
+    allTeamData.forEach(team => drawTeamLines(team));
+    allTeamData.forEach(team => drawTeamEmoji(team));
+    allTeamData.forEach(team => addTeamButton(team));
 
     updateSliderDays();
 
@@ -641,11 +641,11 @@ $.getJSON(
         DAY_BOUNDS.end = +ui.values[1];
         updateSliderDays();
         svg.selectAll('.teamData').remove();
-        Object.values(allTeamData).forEach(team => drawTeamLines(team));
-        Object.values(allTeamData).forEach(team => drawTeamEmoji(team));
+        allTeamData.forEach(team => drawTeamLines(team));
+        allTeamData.forEach(team => drawTeamEmoji(team));
 
         // After redraw, re-hide the hidden teams
-        const hiddenTeams = Object.values(allTeamData).filter(t => t.hidden);
+        const hiddenTeams = allTeamData.filter(t => t.hidden);
         $(hiddenTeams.map(t => `.${teamClass(t)}`).join(', ')).hide();
       },
     });
